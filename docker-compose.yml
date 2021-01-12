@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  app:
+    build:
+      args:
+        user: rindi
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: reservasi-backend
+    container_name: reservasi-backend-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    networks:
+      - reservasi-backend
+
+networks:
+  reservasi-backend:
+    driver: bridge
